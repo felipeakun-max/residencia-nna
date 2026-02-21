@@ -71,7 +71,7 @@ SECRET_KEY = (cualquier texto largo, ej: MiClaveSecreta2025NNA!)
 En el archivo `gestion-nna.html`, busca esta línea al inicio del JavaScript:
 
 ```javascript
-const API_URL = "TU_URL_AQUI";
+const API_URL = “https://residencia-nna-production.up.railway.app”;
 ```
 
 Reemplaza con tu URL de Railway:
