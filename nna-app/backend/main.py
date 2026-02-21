@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import auth, nna, intervenciones, usuarios, seguimiento, talleres
+from contextlib import asynccontextmanager
 from app.database import connect_db, close_db
 
-app = FastAPI(title="Gestión Residencia NNA", version="2.0.0")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await connect_db()
+    yield
+    await close_db()
+
+app = FastAPI(title="Gestión Residencia NNA", version="2.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -13,12 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-async def startup(): await connect_db()
-
-@app.on_event("shutdown")
-async def shutdown(): await close_db()
-
+from app.routers import auth, nna, intervenciones, usuarios, seguimiento, talleres
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 app.include_router(nna.router, prefix="/api/nna", tags=["NNA"])
 app.include_router(intervenciones.router, prefix="/api/intervenciones", tags=["Intervenciones"])
@@ -29,3 +30,7 @@ app.include_router(talleres.router, prefix="/api/talleres", tags=["Talleres"])
 @app.get("/")
 async def root():
     return {"status": "ok", "app": "Gestión Residencia NNA v2.0"}
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
