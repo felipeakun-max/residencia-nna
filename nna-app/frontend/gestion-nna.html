@@ -2114,7 +2114,7 @@ textarea { resize: vertical; min-height: 90px; }
                     <div class="td-name">Ana Martínez</div>
                   </div>
                 </td>
-                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1372777e7a7d536176607a77767d707a723d707f">[email&#160;protected]</a></td>
+                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ceafaaa3a7a08ebcabbda7aaaba0ada7afe0ada2">[email&#160;protected]</a></td>
                 <td><span class="role-badge role-admin">Administrador</span></td>
                 <td><span class="badge badge-active">Activo</span></td>
                 <td>01/01/2025</td>
@@ -2127,7 +2127,7 @@ textarea { resize: vertical; min-height: 90px; }
                     <div class="td-name">Carlos Vera</div>
                   </div>
                 </td>
-                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="324641724057415b56575c515b531c515e">[email&#160;protected]</a></td>
+                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="364245764453455f525358555f5718555a">[email&#160;protected]</a></td>
                 <td><span class="role-badge role-profesional">Profesional</span></td>
                 <td><span class="badge badge-active">Activo</span></td>
                 <td>05/01/2025</td>
@@ -2140,7 +2140,7 @@ textarea { resize: vertical; min-height: 90px; }
                     <div class="td-name">Pedro Núñez</div>
                   </div>
                 </td>
-                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cba6a4a5a2bfa4b98bb9aeb8a2afaea5a8a2aae5a8a7">[email&#160;protected]</a></td>
+                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="670a08090e130815271502140e030209040e0649040b">[email&#160;protected]</a></td>
                 <td><span class="role-badge role-monitor">Monitor</span></td>
                 <td><span class="badge badge-active">Activo</span></td>
                 <td>10/01/2025</td>
@@ -2656,4 +2656,725 @@ function showToast(msg, type = '') {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
   toast.className = 'toast ' + type;
-  toast.innerHTML = `<sp
+  toast.innerHTML = `<sp<script>
+// ─── TALLERES MODULE INJECTION ───────────────────────────
+// Add CSS for talleres
+const talleresStyle = document.createElement('style');
+talleresStyle.textContent = `
+.taller-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.taller-card::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:4px;height:100%;
+  background: var(--accent);
+}
+.taller-card.parentalidad::before { background: #8b5cf6; }
+.taller-card.autocuidado::before { background: var(--success); }
+.taller-card.empleabilidad::before { background: var(--warning); }
+.taller-card.educacion::before { background: var(--accent); }
+.taller-card.salud::before { background: #ec4899; }
+.taller-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.taller-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.taller-area-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.area-parentalidad { background: rgba(139,92,246,0.12); color:#8b5cf6; }
+.area-autocuidado { background: rgba(46,158,107,0.12); color:var(--success); }
+.area-empleabilidad { background: rgba(232,160,32,0.12); color:var(--warning); }
+.area-educacion { background: rgba(42,127,255,0.12); color:var(--accent); }
+.area-salud { background: rgba(236,72,153,0.12); color:#ec4899; }
+.area-otro { background: rgba(96,125,156,0.12); color:var(--steel); }
+.taller-title { font-size:15px; font-weight:600; color:var(--text-main); flex:1; }
+.taller-meta { display:flex; gap:16px; font-size:12px; color:var(--text-soft); flex-wrap:wrap; }
+.taller-meta span { display:flex; align-items:center; gap:4px; }
+.subtabs { display:flex; gap:2px; background:var(--fog); border-radius:var(--radius-sm); padding:3px; margin-bottom:16px; overflow-x:auto; }
+.subtab { padding:6px 14px; border-radius:6px; font-size:12px; font-weight:500; cursor:pointer; color:var(--text-soft); white-space:nowrap; transition:all 0.2s; }
+.subtab.active { background:var(--white); color:var(--text-main); box-shadow:var(--shadow-sm); }
+.diapositiva-card { background:var(--navy); color:white; border-radius:var(--radius); padding:32px; margin-bottom:12px; min-height:160px; display:flex; flex-direction:column; justify-content:center; }
+.diapositiva-num { font-size:11px; opacity:0.5; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; }
+.diapositiva-titulo { font-size:20px; font-weight:700; margin-bottom:12px; font-family:'DM Serif Display',serif; }
+.diapositiva-content { font-size:13px; opacity:0.8; line-height:1.7; }
+.asistente-row { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--fog); }
+.asistente-row:last-child { border-bottom:none; }
+.asistente-check { width:20px; height:20px; cursor:pointer; }
+.asistente-name { flex:1; font-size:13px; font-weight:500; }
+.asistente-obs { flex:2; }
+.asistente-obs input { font-size:12px; padding:6px 10px; }
+.archivo-item { display:flex; align-items:center; gap:12px; padding:12px 14px; background:var(--mist); border-radius:var(--radius-sm); margin-bottom:8px; }
+.archivo-icon { font-size:24px; }
+.archivo-info { flex:1; }
+.archivo-name { font-size:13px; font-weight:500; }
+.archivo-meta { font-size:11px; color:var(--text-soft); }
+.stats-mini { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
+.stat-mini { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; text-align:center; }
+.stat-mini-val { font-size:24px; font-weight:700; color:var(--text-main); font-family:'DM Serif Display',serif; }
+.stat-mini-label { font-size:11px; color:var(--text-soft); margin-top:2px; }
+`;
+document.head.appendChild(talleresStyle);
+
+// ─── INJECT TALLERES NAV ITEM ──────────────────────────
+const navSection = document.querySelector('.nav-section');
+const talleresNav = document.createElement('a');
+talleresNav.className = 'nav-item';
+talleresNav.setAttribute('onclick', "showPage('talleres')");
+talleresNav.innerHTML = '<span class="nav-icon">🎓</span> Talleres';
+navSection.appendChild(talleresNav);
+
+// ─── INJECT TALLERES PAGE ─────────────────────────────
+const pageContent = document.querySelector('.page-content');
+const talleresPage = document.createElement('div');
+talleresPage.className = 'page';
+talleresPage.id = 'page-talleres';
+talleresPage.innerHTML = `
+  <div class="section-header">
+    <div>
+      <div class="section-title">Módulo de Talleres</div>
+      <div class="section-sub">Biblioteca institucional y registro de ejecuciones</div>
+    </div>
+    <button class="btn btn-primary" onclick="openModal('modal-nuevo-taller')">+ Nuevo taller</button>
+  </div>
+
+  <div class="stats-mini">
+    <div class="stat-mini">
+      <div class="stat-mini-val">6</div>
+      <div class="stat-mini-label">Talleres en biblioteca</div>
+    </div>
+    <div class="stat-mini">
+      <div class="stat-mini-val">14</div>
+      <div class="stat-mini-label">Ejecuciones este mes</div>
+    </div>
+    <div class="stat-mini">
+      <div class="stat-mini-val">87%</div>
+      <div class="stat-mini-label">Asistencia promedio</div>
+    </div>
+  </div>
+
+  <div class="tabs" style="margin-bottom:20px;">
+    <div class="tab active" onclick="switchTallerTab(this,'taller-biblioteca')">📚 Biblioteca</div>
+    <div class="tab" onclick="switchTallerTab(this,'taller-ejecuciones')">▶️ Ejecuciones</div>
+    <div class="tab" onclick="switchTallerTab(this,'taller-nuevo-ej')">+ Ejecutar</div>
+  </div>
+
+  <!-- BIBLIOTECA -->
+  <div id="taller-biblioteca" class="tab-content active">
+    <div id="talleres-list"></div>
+  </div>
+
+  <!-- EJECUCIONES -->
+  <div id="taller-ejecuciones" class="tab-content">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Historial de ejecuciones</div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Taller</th><th>Área</th><th>Fecha</th><th>Asistentes</th><th>Profesional</th><th>Acciones</th></tr></thead>
+          <tbody id="ejecuciones-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJECUTAR -->
+  <div id="taller-nuevo-ej" class="tab-content">
+    <div class="card">
+      <div class="card-header"><div class="card-title">▶️ Ejecutar Taller</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Seleccionar taller</label>
+            <select id="ej-taller-select" onchange="loadTallerInfo(this.value)">
+              <option value="">-- Elige un taller --</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Fecha</label><input type="date" id="ej-fecha"/></div>
+          <div class="form-group"><label>Lugar</label><input type="text" id="ej-lugar" placeholder="Sala, comedor, etc."/></div>
+          <div class="form-group full"><label>Observaciones generales</label><textarea id="ej-obs" placeholder="Notas sobre la sesión..."></textarea></div>
+        </div>
+        <div id="ej-asistentes-section" style="display:none; margin-top:16px;">
+          <div style="font-size:13px; font-weight:600; color:var(--text-mid); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.4px;">Registro de asistencia</div>
+          <div id="ej-asistentes-list"></div>
+        </div>
+        <div class="form-actions" style="margin-top:16px;">
+          <button class="btn btn-outline" onclick="switchTallerTab(document.querySelector('.tab'),'taller-biblioteca')">Cancelar</button>
+          <button class="btn btn-primary" onclick="ejecutarTaller()">✅ Registrar ejecución</button>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+pageContent.appendChild(talleresPage);
+
+// ─── INJECT TALLER DETAIL PAGE ────────────────────────
+const tallerDetailPage = document.createElement('div');
+tallerDetailPage.className = 'page';
+tallerDetailPage.id = 'page-taller-detalle';
+tallerDetailPage.innerHTML = `
+  <button class="btn btn-outline btn-sm" onclick="showPage('talleres')" style="margin-bottom:16px;">← Volver a talleres</button>
+  
+  <div class="ficha-header" id="taller-detail-header">
+    <div style="width:56px;height:56px;background:rgba(42,127,255,0.12);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🎓</div>
+    <div style="flex:1;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <div class="ficha-name" id="td-titulo">Taller</div>
+        <span class="badge badge-blue" id="td-area">Área</span>
+      </div>
+      <div class="ficha-meta">
+        <div class="ficha-meta-item">⏱️ <span id="td-duracion">60 min</span></div>
+        <div class="ficha-meta-item">👥 <span id="td-poblacion">Población</span></div>
+        <div class="ficha-meta-item">▶️ <span id="td-ejecuciones">0 ejecuciones</span></div>
+      </div>
+    </div>
+    <div class="ficha-actions">
+      <button class="btn btn-outline btn-sm" onclick="openModal('modal-subir-archivo')">📎 Adjuntar</button>
+      <button class="btn btn-primary btn-sm" onclick="switchTallerTab(document.querySelectorAll('#page-talleres .tab')[2],'taller-nuevo-ej'); showPage('talleres')">▶️ Ejecutar</button>
+    </div>
+  </div>
+
+  <div class="subtabs">
+    <div class="subtab active" onclick="switchSubTab(this,'std-resumen')">Resumen</div>
+    <div class="subtab" onclick="switchSubTab(this,'std-diapositivas')">🖼️ Diapositivas</div>
+    <div class="subtab" onclick="switchSubTab(this,'std-actividades')">🎯 Actividades</div>
+    <div class="subtab" onclick="switchSubTab(this,'std-material')">📋 Material</div>
+    <div class="subtab" onclick="switchSubTab(this,'std-archivos')">📎 Archivos</div>
+    <div class="subtab" onclick="switchSubTab(this,'std-asistencia')">✅ Asistencia</div>
+  </div>
+
+  <div id="std-resumen" class="tab-content active">
+    <div class="card">
+      <div class="card-header"><div class="card-title">Objetivo general</div></div>
+      <div class="card-body">
+        <p id="td-objetivo" style="font-size:14px;line-height:1.7;color:var(--text-mid);"></p>
+        <div style="margin-top:16px;">
+          <div style="font-size:12px;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Objetivos específicos</div>
+          <ul id="td-obj-especificos" style="padding-left:16px;font-size:13px;color:var(--text-mid);line-height:1.8;"></ul>
+        </div>
+        <div style="margin-top:16px;">
+          <div style="font-size:12px;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Materiales necesarios</div>
+          <div id="td-materiales" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="std-diapositivas" class="tab-content">
+    <div class="section-header" style="margin-bottom:14px;">
+      <div class="section-title" style="font-size:16px;">Diapositivas</div>
+      <button class="btn btn-primary btn-sm" onclick="openModal('modal-nueva-diapositiva')">+ Agregar</button>
+    </div>
+    <div id="td-diapositivas"></div>
+  </div>
+
+  <div id="std-actividades" class="tab-content">
+    <div class="section-header" style="margin-bottom:14px;">
+      <div class="section-title" style="font-size:16px;">Actividades</div>
+      <button class="btn btn-primary btn-sm" onclick="openModal('modal-nueva-actividad')">+ Agregar</button>
+    </div>
+    <div id="td-actividades"></div>
+  </div>
+
+  <div id="std-material" class="tab-content">
+    <div class="section-header" style="margin-bottom:14px;">
+      <div class="section-title" style="font-size:16px;">Material imprimible</div>
+      <button class="btn btn-primary btn-sm" onclick="openModal('modal-nuevo-material')">+ Agregar</button>
+    </div>
+    <div id="td-material"></div>
+  </div>
+
+  <div id="std-archivos" class="tab-content">
+    <div class="section-header" style="margin-bottom:14px;">
+      <div class="section-title" style="font-size:16px;">Archivos adjuntos</div>
+      <button class="btn btn-primary btn-sm" onclick="openModal('modal-subir-archivo')">+ Subir</button>
+    </div>
+    <div id="td-archivos"></div>
+  </div>
+
+  <div id="std-asistencia" class="tab-content">
+    <div class="section-header" style="margin-bottom:14px;">
+      <div class="section-title" style="font-size:16px;">Historial de asistencia</div>
+    </div>
+    <div id="td-asistencia"></div>
+  </div>
+`;
+pageContent.appendChild(tallerDetailPage);
+
+// ─── INJECT MODALES ───────────────────────────────────
+const modalHTML = `
+<!-- Modal: Nuevo Taller -->
+<div class="modal-overlay" id="modal-nuevo-taller">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Nuevo Taller</div>
+      <button class="modal-close" onclick="closeModal('modal-nuevo-taller')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Título *</label><input type="text" id="nt-titulo" placeholder="Ej: Taller de Comunicación Familiar"/></div>
+        <div class="form-group">
+          <label>Área *</label>
+          <select id="nt-area">
+            <option value="parentalidad">Parentalidad</option>
+            <option value="autocuidado">Autocuidado</option>
+            <option value="empleabilidad">Empleabilidad</option>
+            <option value="educacion">Educación</option>
+            <option value="salud">Salud</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Duración (minutos) *</label><input type="number" id="nt-duracion" value="90"/></div>
+        <div class="form-group full"><label>Población objetivo</label><input type="text" id="nt-poblacion" placeholder="Ej: NNA de 12-17 años"/></div>
+        <div class="form-group full"><label>Objetivo general *</label><textarea id="nt-objetivo" placeholder="Objetivo principal del taller..."></textarea></div>
+        <div class="form-group full"><label>Descripción</label><textarea id="nt-desc" placeholder="Descripción general del taller..."></textarea></div>
+        <div class="form-group full"><label>Materiales (separados por coma)</label><input type="text" id="nt-materiales" placeholder="Ej: Papel, lápices, tijeras"/></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-nuevo-taller')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveTaller()">Crear taller</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Nueva Diapositiva -->
+<div class="modal-overlay" id="modal-nueva-diapositiva">
+  <div class="modal" style="max-width:500px;">
+    <div class="modal-header">
+      <div class="modal-title">Nueva Diapositiva</div>
+      <button class="modal-close" onclick="closeModal('modal-nueva-diapositiva')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Título</label><input type="text" id="nd-titulo" placeholder="Título de la diapositiva"/></div>
+        <div class="form-group full"><label>Contenido</label><textarea id="nd-contenido" style="min-height:120px;" placeholder="Puntos clave, texto, etc."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-nueva-diapositiva')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveDiapositiva()">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Nueva Actividad -->
+<div class="modal-overlay" id="modal-nueva-actividad">
+  <div class="modal" style="max-width:500px;">
+    <div class="modal-header">
+      <div class="modal-title">Nueva Actividad</div>
+      <button class="modal-close" onclick="closeModal('modal-nueva-actividad')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Nombre</label><input type="text" id="na-nombre" placeholder="Nombre de la actividad"/></div>
+        <div class="form-group"><label>Tiempo estimado (min)</label><input type="number" id="na-tiempo" value="15"/></div>
+        <div class="form-group"><label>Tipo</label>
+          <select id="na-tipo"><option>Dinámica grupal</option><option>Reflexión individual</option><option>Juego</option><option>Exposición</option><option>Debate</option></select>
+        </div>
+        <div class="form-group full"><label>Descripción</label><textarea id="na-desc" placeholder="Descripción de la actividad..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-nueva-actividad')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveActividad()">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Subir Archivo -->
+<div class="modal-overlay" id="modal-subir-archivo">
+  <div class="modal" style="max-width:440px;">
+    <div class="modal-header">
+      <div class="modal-title">Subir archivo al taller</div>
+      <button class="modal-close" onclick="closeModal('modal-subir-archivo')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Nombre descriptivo</label><input type="text" id="arch-nombre" placeholder="Ej: Presentación Canva Sesión 1"/></div>
+        <div class="form-group full">
+          <label>Archivo (PDF, PPTX, DOCX)</label>
+          <input type="file" id="arch-file" accept=".pdf,.pptx,.docx,.doc"/>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:12px;background:var(--mist);border-radius:var(--radius-sm);font-size:12px;color:var(--text-soft);">
+        ✅ Formatos aceptados: PDF, PowerPoint (PPTX), Word (DOCX)<br/>
+        ✅ Incluye presentaciones exportadas desde Canva
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-subir-archivo')">Cancelar</button>
+      <button class="btn btn-primary" onclick="subirArchivo()">Subir archivo</button>
+    </div>
+  </div>
+</div>
+`;
+document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+});
+
+// ─── TALLERES DATA ────────────────────────────────────
+let talleresData = [
+  {
+    id: "t1",
+    titulo: "Comunicación Familiar Efectiva",
+    area: "parentalidad",
+    objetivo_general: "Desarrollar habilidades de comunicación asertiva entre NNA y sus familias para fortalecer los vínculos afectivos y mejorar la dinámica familiar.",
+    objetivos_especificos: [
+      "Identificar patrones de comunicación en la familia",
+      "Practicar técnicas de escucha activa",
+      "Desarrollar expresión emocional saludable"
+    ],
+    duracion_minutos: 90,
+    poblacion_objetivo: "NNA de 10-17 años con familias",
+    descripcion: "Taller interactivo que aborda la comunicación dentro del núcleo familiar.",
+    materiales: ["Papel kraft", "Plumones", "Tarjetas de emoción", "Pelota antiestrés"],
+    diapositivas: [
+      { titulo: "¿Cómo nos comunicamos en familia?", contenido: "• Los patrones de comunicación\n• Comunicación verbal vs no verbal\n• Barreras más comunes", orden: 1 },
+      { titulo: "Escucha activa", contenido: "• Mirar a los ojos\n• No interrumpir\n• Parafrasear lo que escuchamos\n• Validar emociones", orden: 2 },
+      { titulo: "Práctica", contenido: "Dinámica: 'El teléfono emocional'\nCada participante comparte una emoción que quiere que la familia entienda.", orden: 3 }
+    ],
+    actividades: [
+      { nombre: "Mapa familiar", descripcion: "Cada NNA dibuja su red familiar e identifica con quién se comunica mejor y por qué.", tiempo_estimado: 20, tipo: "Reflexión individual" },
+      { nombre: "Role play comunicación", descripcion: "Por parejas practican cómo pedir algo a un familiar usando comunicación asertiva.", tiempo_estimado: 25, tipo: "Dinámica grupal" }
+    ],
+    material_imprimible: [
+      { tipo: "ficha", titulo: "Ficha de autoconocimiento comunicacional", contenido: "¿Cómo me comunico cuando estoy enojado/a?\n¿Cómo me gustaría que me hablaran?\n¿Qué necesito de mi familia?" }
+    ],
+    archivos: [
+      { id: "a1", nombre_original: "Presentacion_Comunicacion.pdf", tipo: "pdf", subido_por: "Ana Martínez", fecha_subida: "2025-01-15" }
+    ],
+    total_ejecuciones: 3,
+    creado_por: "Ana Martínez"
+  },
+  {
+    id: "t2",
+    titulo: "Autocuidado y Regulación Emocional",
+    area: "autocuidado",
+    objetivo_general: "Fortalecer las habilidades de autocuidado y regulación emocional en NNA para promover el bienestar mental.",
+    objetivos_especificos: [
+      "Reconocer señales de malestar emocional",
+      "Aprender técnicas de regulación emocional",
+      "Construir un plan personal de autocuidado"
+    ],
+    duracion_minutos: 75,
+    poblacion_objetivo: "NNA de 12-17 años",
+    descripcion: "Taller centrado en herramientas prácticas de autocuidado y manejo emocional.",
+    materiales: ["Cartulinas", "Revistas", "Pegamento", "Tijeras"],
+    diapositivas: [
+      { titulo: "¿Qué es el autocuidado?", contenido: "• Cuerpo, mente y emociones\n• No es egoísmo, es necesidad\n• Señales de alarma", orden: 1 },
+      { titulo: "Técnicas de regulación", contenido: "• Respiración 4-7-8\n• Anclaje sensorial (5-4-3-2-1)\n• Movimiento corporal", orden: 2 }
+    ],
+    actividades: [
+      { nombre: "Collage de bienestar", descripcion: "Crear un collage con imágenes y palabras que representan el bienestar personal.", tiempo_estimado: 30, tipo: "Dinámica grupal" }
+    ],
+    material_imprimible: [],
+    archivos: [],
+    total_ejecuciones: 5,
+    creado_por: "Carlos Vera"
+  },
+  {
+    id: "t3",
+    titulo: "Habilidades para la Vida",
+    area: "empleabilidad",
+    objetivo_general: "Desarrollar competencias básicas para la vida independiente y la inserción laboral futura.",
+    objetivos_especificos: [
+      "Identificar fortalezas y habilidades personales",
+      "Conocer derechos laborales básicos",
+      "Elaborar un CV básico"
+    ],
+    duracion_minutos: 120,
+    poblacion_objetivo: "NNA de 15-17 años",
+    descripcion: "Taller orientado al desarrollo de competencias para la vida adulta independiente.",
+    materiales: ["Computador", "Impresora", "Formulario CV"],
+    diapositivas: [],
+    actividades: [],
+    material_imprimible: [],
+    archivos: [],
+    total_ejecuciones: 2,
+    creado_por: "Ana Martínez"
+  }
+];
+
+let ejecucionesData = [
+  { id:"e1", taller_titulo:"Comunicación Familiar", taller_area:"parentalidad", fecha:"2025-02-10", asistentes:[{nna_nombre:"Matías R.",presente:true},{nna_nombre:"Valentina S.",presente:true},{nna_nombre:"Diego F.",presente:false}], profesional_nombre:"Ana Martínez" },
+  { id:"e2", taller_titulo:"Autocuidado", taller_area:"autocuidado", fecha:"2025-02-05", asistentes:[{nna_nombre:"Camila T.",presente:true},{nna_nombre:"Andrea M.",presente:true}], profesional_nombre:"Carlos Vera" }
+];
+
+let currentTaller = null;
+
+// ─── RENDER FUNCTIONS ─────────────────────────────────
+function renderTalleres() {
+  const list = document.getElementById('talleres-list');
+  if (!list) return;
+  list.innerHTML = talleresData.map(t => `
+    <div class="taller-card ${t.area}" onclick="openTallerDetalle('${t.id}')">
+      <div class="taller-header">
+        <div class="taller-title">${t.titulo}</div>
+        <span class="taller-area-badge area-${t.area}">${areaLabel(t.area)}</span>
+      </div>
+      <p style="font-size:13px;color:var(--text-mid);margin-bottom:12px;line-height:1.5;">${t.descripcion}</p>
+      <div class="taller-meta">
+        <span>⏱️ ${t.duracion_minutos} min</span>
+        <span>👥 ${t.poblacion_objetivo}</span>
+        <span>▶️ ${t.total_ejecuciones} ejecuciones</span>
+        <span>📎 ${t.archivos.length} archivos</span>
+        <span>🖼️ ${t.diapositivas.length} diapositivas</span>
+      </div>
+    </div>
+  `).join('');
+
+  // Render ejecuciones table
+  const tbody = document.getElementById('ejecuciones-table');
+  if (tbody) {
+    tbody.innerHTML = ejecucionesData.map(e => `
+      <tr>
+        <td class="td-name">${e.taller_titulo}</td>
+        <td><span class="taller-area-badge area-${e.taller_area}">${areaLabel(e.taller_area)}</span></td>
+        <td>${e.fecha}</td>
+        <td>${e.asistentes.filter(a=>a.presente).length}/${e.asistentes.length} presentes</td>
+        <td>${e.profesional_nombre}</td>
+        <td><button class="btn btn-outline btn-sm">👁 Ver</button></td>
+      </tr>
+    `).join('');
+  }
+
+  // Populate ejecutar select
+  const sel = document.getElementById('ej-taller-select');
+  if (sel) {
+    sel.innerHTML = '<option value="">-- Elige un taller --</option>' +
+      talleresData.map(t => `<option value="${t.id}">${t.titulo}</option>`).join('');
+  }
+}
+
+function areaLabel(area) {
+  return { parentalidad:'Parentalidad', autocuidado:'Autocuidado', empleabilidad:'Empleabilidad', educacion:'Educación', salud:'Salud', otro:'Otro' }[area] || area;
+}
+
+function openTallerDetalle(id) {
+  const t = talleresData.find(x => x.id === id);
+  if (!t) return;
+  currentTaller = t;
+
+  document.getElementById('td-titulo').textContent = t.titulo;
+  document.getElementById('td-area').textContent = areaLabel(t.area);
+  document.getElementById('td-duracion').textContent = t.duracion_minutos + ' min';
+  document.getElementById('td-poblacion').textContent = t.poblacion_objetivo;
+  document.getElementById('td-ejecuciones').textContent = t.total_ejecuciones + ' ejecuciones';
+  document.getElementById('td-objetivo').textContent = t.objetivo_general;
+
+  // Objetivos específicos
+  const ul = document.getElementById('td-obj-especificos');
+  ul.innerHTML = (t.objetivos_especificos || []).map(o => `<li>${o}</li>`).join('');
+
+  // Materiales
+  const mats = document.getElementById('td-materiales');
+  mats.innerHTML = (t.materiales || []).map(m => `<span class="badge badge-blue">${m}</span>`).join('');
+
+  // Diapositivas
+  const diaps = document.getElementById('td-diapositivas');
+  diaps.innerHTML = t.diapositivas.length ? t.diapositivas.map((d,i) => `
+    <div class="diapositiva-card">
+      <div class="diapositiva-num">Diapositiva ${i+1}</div>
+      <div class="diapositiva-titulo">${d.titulo}</div>
+      <div class="diapositiva-content">${d.contenido.replace(/\n/g,'<br/>')}</div>
+    </div>
+  `).join('') : '<div class="empty-state"><div class="empty-icon">🖼️</div><div class="empty-text">Sin diapositivas aún</div><button class="btn btn-primary" onclick="openModal(\'modal-nueva-diapositiva\')">+ Agregar</button></div>';
+
+  // Actividades
+  const acts = document.getElementById('td-actividades');
+  acts.innerHTML = t.actividades.length ? t.actividades.map(a => `
+    <div class="intervencion-card bajo" style="margin-bottom:12px;">
+      <div class="intervencion-header">
+        <div class="intervencion-tipo">🎯 ${a.nombre}</div>
+        <span class="badge badge-blue">${a.tipo}</span>
+        <div class="intervencion-fecha">⏱️ ${a.tiempo_estimado} min</div>
+      </div>
+      <div class="intervencion-desc">${a.descripcion}</div>
+    </div>
+  `).join('') : '<div class="empty-state"><div class="empty-icon">🎯</div><div class="empty-text">Sin actividades aún</div></div>';
+
+  // Material imprimible
+  const mat = document.getElementById('td-material');
+  mat.innerHTML = t.material_imprimible.length ? t.material_imprimible.map(m => `
+    <div class="registro-card">
+      <div class="registro-date">📋 ${m.titulo} · <span class="badge badge-blue">${m.tipo}</span></div>
+      <div style="font-size:13px;color:var(--text-mid);margin-top:8px;line-height:1.7;">${m.contenido.replace(/\n/g,'<br/>')}</div>
+      <div style="margin-top:10px;"><button class="btn btn-outline btn-sm" onclick="showToast('Preparando impresión...','success')">🖨️ Imprimir</button></div>
+    </div>
+  `).join('') : '<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">Sin material imprimible</div></div>';
+
+  // Archivos
+  const archs = document.getElementById('td-archivos');
+  archs.innerHTML = t.archivos.length ? t.archivos.map(a => `
+    <div class="archivo-item">
+      <div class="archivo-icon">${a.tipo==='pdf'?'📄':a.tipo==='pptx'?'📊':'📝'}</div>
+      <div class="archivo-info">
+        <div class="archivo-name">${a.nombre_original}</div>
+        <div class="archivo-meta">Subido por ${a.subido_por} · ${a.fecha_subida}</div>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="showToast('Descargando...','success')">⬇️</button>
+      <button class="btn btn-danger btn-sm" onclick="showToast('Archivo eliminado','success')">🗑️</button>
+    </div>
+  `).join('') : '<div class="empty-state"><div class="empty-icon">📎</div><div class="empty-text">Sin archivos adjuntos. Puedes subir PDF, PPTX o DOCX.</div><button class="btn btn-primary" onclick="openModal(\'modal-subir-archivo\')">+ Subir archivo</button></div>';
+
+  // Asistencia histórica
+  const asist = document.getElementById('td-asistencia');
+  const ejecs = ejecucionesData.filter(e => e.taller_titulo === t.titulo);
+  asist.innerHTML = ejecs.length ? ejecs.map(e => `
+    <div class="registro-card">
+      <div class="registro-date">📅 ${e.fecha} — ${e.profesional_nombre}</div>
+      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+        ${e.asistentes.map(a => `<span class="badge ${a.presente?'badge-active':'badge-egreso'}">${a.presente?'✓':'✗'} ${a.nna_nombre}</span>`).join('')}
+      </div>
+    </div>
+  `).join('') : '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">Sin ejecuciones registradas aún</div></div>';
+
+  showPage('taller-detalle');
+}
+
+function switchTallerTab(el, targetId) {
+  const page = document.getElementById('page-talleres');
+  page.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  page.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+  const target = document.getElementById(targetId);
+  if (target) target.classList.add('active');
+  if (targetId === 'taller-nuevo-ej') loadAsistentesEjecucion();
+}
+
+function switchSubTab(el, targetId) {
+  el.parentElement.querySelectorAll('.subtab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#page-taller-detalle .tab-content').forEach(tc => tc.classList.remove('active'));
+  const target = document.getElementById(targetId);
+  if (target) target.classList.add('active');
+}
+
+function loadTallerInfo(id) {
+  if (!id) { document.getElementById('ej-asistentes-section').style.display='none'; return; }
+  document.getElementById('ej-asistentes-section').style.display='block';
+  loadAsistentesEjecucion();
+}
+
+function loadAsistentesEjecucion() {
+  const list = document.getElementById('ej-asistentes-list');
+  if (!list) return;
+  list.innerHTML = nnaData.filter(n=>n.estado==='activo').map(n => `
+    <div class="asistente-row">
+      <input type="checkbox" class="asistente-check" id="asist-${n.id}" checked/>
+      <div class="asistente-avatar" style="width:32px;height:32px;background:var(--fog);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--slate);">${n.iniciales}</div>
+      <div class="asistente-name">${n.nombre}</div>
+      <div class="asistente-obs"><input type="text" placeholder="Observación (opcional)..." style="font-size:12px;padding:6px 10px;"/></div>
+    </div>
+  `).join('');
+}
+
+// ─── SAVE FUNCTIONS ───────────────────────────────────
+function saveTaller() {
+  const titulo = document.getElementById('nt-titulo').value;
+  if (!titulo) { showToast('Ingresa el título del taller', 'error'); return; }
+  const nuevo = {
+    id: 't' + Date.now(),
+    titulo,
+    area: document.getElementById('nt-area').value,
+    objetivo_general: document.getElementById('nt-objetivo').value,
+    objetivos_especificos: [],
+    duracion_minutos: parseInt(document.getElementById('nt-duracion').value) || 90,
+    poblacion_objetivo: document.getElementById('nt-poblacion').value,
+    descripcion: document.getElementById('nt-desc').value,
+    materiales: document.getElementById('nt-materiales').value.split(',').map(m=>m.trim()).filter(Boolean),
+    diapositivas: [], actividades: [], material_imprimible: [], archivos: [],
+    total_ejecuciones: 0,
+    creado_por: currentUser?.nombre || 'Sistema'
+  };
+  talleresData.unshift(nuevo);
+  renderTalleres();
+  closeModal('modal-nuevo-taller');
+  showToast('Taller creado exitosamente ✅', 'success');
+}
+
+function saveDiapositiva() {
+  if (!currentTaller) return;
+  const d = { titulo: document.getElementById('nd-titulo').value, contenido: document.getElementById('nd-contenido').value, orden: currentTaller.diapositivas.length + 1 };
+  currentTaller.diapositivas.push(d);
+  openTallerDetalle(currentTaller.id);
+  closeModal('modal-nueva-diapositiva');
+  showToast('Diapositiva agregada ✅', 'success');
+}
+
+function saveActividad() {
+  if (!currentTaller) return;
+  const a = { nombre: document.getElementById('na-nombre').value, descripcion: document.getElementById('na-desc').value, tiempo_estimado: parseInt(document.getElementById('na-tiempo').value)||15, tipo: document.getElementById('na-tipo').value };
+  currentTaller.actividades.push(a);
+  openTallerDetalle(currentTaller.id);
+  closeModal('modal-nueva-actividad');
+  showToast('Actividad agregada ✅', 'success');
+}
+
+function subirArchivo() {
+  const file = document.getElementById('arch-file').files[0];
+  const nombre = document.getElementById('arch-nombre').value;
+  if (!file) { showToast('Selecciona un archivo', 'error'); return; }
+  const ext = file.name.split('.').pop();
+  const archivo = { id: 'a'+Date.now(), nombre_original: nombre || file.name, tipo: ext, subido_por: currentUser?.nombre||'Usuario', fecha_subida: new Date().toISOString().split('T')[0] };
+  if (currentTaller) {
+    currentTaller.archivos.push(archivo);
+    openTallerDetalle(currentTaller.id);
+  }
+  closeModal('modal-subir-archivo');
+  showToast('Archivo subido exitosamente ✅', 'success');
+}
+
+function ejecutarTaller() {
+  const tallerId = document.getElementById('ej-taller-select').value;
+  const fecha = document.getElementById('ej-fecha').value;
+  if (!tallerId || !fecha) { showToast('Selecciona taller y fecha', 'error'); return; }
+  const taller = talleresData.find(t=>t.id===tallerId);
+  const rows = document.querySelectorAll('#ej-asistentes-list .asistente-row');
+  const asistentes = Array.from(rows).map((row, i) => ({
+    nna_id: nnaData.filter(n=>n.estado==='activo')[i]?.id,
+    nna_nombre: nnaData.filter(n=>n.estado==='activo')[i]?.nombre,
+    presente: row.querySelector('.asistente-check').checked,
+    observacion: row.querySelector('input[type=text]').value
+  }));
+  const presentes = asistentes.filter(a=>a.presente).length;
+  const ejecucion = { id:'e'+Date.now(), taller_titulo: taller.titulo, taller_area: taller.area, fecha, asistentes, profesional_nombre: currentUser?.nombre||'Profesional' };
+  ejecucionesData.unshift(ejecucion);
+  taller.total_ejecuciones++;
+  // Simular creación automática de intervenciones
+  showToast(`✅ Taller ejecutado. ${presentes} intervenciones generadas automáticamente.`, 'success');
+  renderTalleres();
+}
+
+// Override renderAll to include talleres
+const _origRenderAll = renderAll;
+window.renderAll = function() { _origRenderAll(); renderTalleres(); };
+
+// Override showPage to handle taller-detalle
+const _origShowPage = showPage;
+window.showPage = function(page) {
+  _origShowPage(page);
+  if (page === 'talleres') renderTalleres();
+  // Update title
+  if (page === 'taller-detalle') document.getElementById('page-title').textContent = currentTaller?.titulo || 'Detalle Taller';
+};
+
+</script>
