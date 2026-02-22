@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from contextlib import asynccontextmanager
 from app.database import connect_db, close_db
-import os
+import os, urllib.request
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,17 +26,12 @@ app.include_router(talleres.router, prefix="/api/talleres")
 async def health():
     return {"status": "ok"}
 
-@app.get("/health")
-async def health():
-    return {"status": "ok"}
-
 @app.get("/")
 async def frontend():
-    import urllib.request
-    html_url = "https://raw.githubusercontent.com/felipeakun-max/residencia-nna/main/nna-app/frontend/gestion-nna.html"
     try:
-        with urllib.request.urlopen(html_url) as response:
-            html = response.read().decode('utf-8')
-            return HTMLResponse(html)
+        url = "https://raw.githubusercontent.com/felipeakun-max/residencia-nna/main/nna-app/frontend/gestion-nna.html"
+        with urllib.request.urlopen(url) as r:
+            return HTMLResponse(r.read().decode("utf-8"))
     except Exception as e:
         return HTMLResponse(f"<h1>Error: {e}</h1>")
+
