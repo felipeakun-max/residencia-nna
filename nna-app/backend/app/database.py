@@ -12,28 +12,28 @@ async def connect_db():
     try:
         client = motor.motor_asyncio.AsyncIOMotorClient(
             MONGO_URL,
-            serverSelectionTimeoutMS=5000,
-            connectTimeoutMS=5000,
-            socketTimeoutMS=5000,
+            serverSelectionTimeoutMS=10000,
+            connectTimeoutMS=10000,
+            socketTimeoutMS=10000,
             tls=True,
             tlsAllowInvalidCertificates=True
         )
         db = client[DB_NAME]
-        # Crear usuario admin por defecto si no existe
-        from app.utils.auth import hash_password
+        from passlib.context import CryptContext
+        pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
         existing = await db.usuarios.find_one({"email": "admin@residencia.cl"})
         if not existing:
             await db.usuarios.insert_one({
                 "email": "admin@residencia.cl",
                 "nombre": "Administrador",
                 "rol": "admin",
-                "password_hash": hash_password("admin123"),
+                "password_hash": pwd.hash("admin123"),
                 "activo": True
             })
-        print("✅ Base de datos conectada")
+            print("✅ Admin creado")
+        print("✅ MongoDB conectado")
     except Exception as e:
-        print(f"⚠️ MongoDB no disponible al inicio: {e}")
-        print("El servidor continuará — reintentará al recibir peticiones")
+        print(f"⚠️ Error: {e}")
 
 async def close_db():
     if client:
