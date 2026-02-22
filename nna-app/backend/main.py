@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from contextlib import asynccontextmanager
 from app.database import connect_db, close_db
+import os
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -9,28 +11,25 @@ async def lifespan(app: FastAPI):
     yield
     await close_db()
 
-app = FastAPI(title="Gestión Residencia NNA", version="2.0.0", lifespan=lifespan)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app = FastAPI(lifespan=lifespan)
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 from app.routers import auth, nna, intervenciones, usuarios, seguimiento, talleres
-app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
-app.include_router(nna.router, prefix="/api/nna", tags=["NNA"])
-app.include_router(intervenciones.router, prefix="/api/intervenciones", tags=["Intervenciones"])
-app.include_router(usuarios.router, prefix="/api/usuarios", tags=["Usuarios"])
-app.include_router(seguimiento.router, prefix="/api/seguimiento", tags=["Seguimiento"])
-app.include_router(talleres.router, prefix="/api/talleres", tags=["Talleres"])
-
-@app.get("/")
-async def root():
-    return {"status": "ok", "app": "Gestión Residencia NNA v2.0"}
+app.include_router(auth.router, prefix="/api/auth")
+app.include_router(nna.router, prefix="/api/nna")
+app.include_router(intervenciones.router, prefix="/api/intervenciones")
+app.include_router(usuarios.router, prefix="/api/usuarios")
+app.include_router(seguimiento.router, prefix="/api/seguimiento")
+app.include_router(talleres.router, prefix="/api/talleres")
 
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+@app.get("/")
+async def frontend():
+    html_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "gestion-nna.html")
+    if os.path.exists(html_path):
+        with open(html_path, "r") as f:
+            return HTMLResponse(f.read())
+    return HTMLResponse("<h1>Backend OK</h1>")
