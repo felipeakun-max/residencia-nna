@@ -34,4 +34,20 @@ async def frontend():
             return HTMLResponse(r.read().decode("utf-8"))
     except Exception as e:
         return HTMLResponse(f"<h1>Error: {e}</h1>")
+        @app.get("/setup")
+async def setup():
+    from passlib.context import CryptContext
+    pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+    from app.database import get_db
+    db = get_db()
+    await db.usuarios.delete_many({"email": "admin@residencia.cl"})
+    await db.usuarios.insert_one({
+        "email": "admin@residencia.cl",
+        "nombre": "Administrador",
+        "rol": "admin",
+        "password_hash": pwd.hash("admin123"),
+        "activo": True
+    })
+    return {"ok": "Usuario admin creado"}
+
 
