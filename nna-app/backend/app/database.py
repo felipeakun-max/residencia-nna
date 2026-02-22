@@ -43,18 +43,4 @@ def get_db():
     if db is None:
         raise Exception("Base de datos no conectada")
     return db
-    @app.get("/setup")
-async def setup():
-    from passlib.context import CryptContext
-    pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
-    db = get_db()
-    await db.usuarios.delete_many({"email": "admin@residencia.cl"})
-    await db.usuarios.insert_one({
-        "email": "admin@residencia.cl",
-        "nombre": "Administrador",
-        "rol": "admin",
-        "password_hash": pwd.hash("admin123"),
-        "activo": True
-    })
-    return {"ok": "Usuario admin creado"}
-
+    
