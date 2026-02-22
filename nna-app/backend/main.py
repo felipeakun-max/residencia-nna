@@ -28,7 +28,7 @@ async def health():
 
 @app.get("/")
 async def frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "gestion-nna.html")
+    html_path = os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "gestion-nna.html")
     if os.path.exists(html_path):
         with open(html_path, "r") as f:
             return HTMLResponse(f.read())
