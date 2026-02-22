@@ -26,20 +26,17 @@ app.include_router(talleres.router, prefix="/api/talleres")
 async def health():
     return {"status": "ok"}
 
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
 @app.get("/")
 async def frontend():
-    paths = [
-        "/app/nna-app/frontend/gestion-nna.html",
-        "/app/frontend/gestion-nna.html",
-        os.path.join(os.path.dirname(__file__), "..", "frontend", "gestion-nna.html"),
-        os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "gestion-nna.html"),
-    ]
-    for path in paths:
-        if os.path.exists(path):
-            with open(path, "r") as f:
-                return HTMLResponse(f.read())
-    # Mostrar rutas para debug
-    import glob
-    found = glob.glob("/app/**/*.html", recursive=True)
-    return HTMLResponse(f"<h1>HTML no encontrado</h1><p>Buscado: {found}</p>")
-
+    import urllib.request
+    html_url = "https://raw.githubusercontent.com/felipeakun-max/residencia-nna/main/nna-app/frontend/gestion-nna.html"
+    try:
+        with urllib.request.urlopen(html_url) as response:
+            html = response.read().decode('utf-8')
+            return HTMLResponse(html)
+    except Exception as e:
+        return HTMLResponse(f"<h1>Error: {e}</h1>")
