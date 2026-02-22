@@ -28,8 +28,18 @@ async def health():
 
 @app.get("/")
 async def frontend():
-    html_path = os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "gestion-nna.html")
-    if os.path.exists(html_path):
-        with open(html_path, "r") as f:
-            return HTMLResponse(f.read())
-    return HTMLResponse("<h1>Backend OK</h1>")
+    paths = [
+        "/app/nna-app/frontend/gestion-nna.html",
+        "/app/frontend/gestion-nna.html",
+        os.path.join(os.path.dirname(__file__), "..", "frontend", "gestion-nna.html"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "gestion-nna.html"),
+    ]
+    for path in paths:
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                return HTMLResponse(f.read())
+    # Mostrar rutas para debug
+    import glob
+    found = glob.glob("/app/**/*.html", recursive=True)
+    return HTMLResponse(f"<h1>HTML no encontrado</h1><p>Buscado: {found}</p>")
+
