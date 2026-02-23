@@ -53,7 +53,7 @@ return {“ok”: “Usuario admin creado exitosamente”}
 async def frontend():
 try:
 url = “https://raw.githubusercontent.com/felipeakun-max/residencia-nna/main/nna-app/frontend/gestion-nna.html”
-with urllib.request.urlopen(url) as r:
+with urllib.request.urlopen(url, timeout=10) as r:
 return HTMLResponse(r.read().decode(“utf-8”))
 except Exception as e:
-return HTMLResponse(f”<h1>Error cargando frontend: {e}</h1>”)
+return HTMLResponse(f”<h1>Error: {e}</h1>”)
