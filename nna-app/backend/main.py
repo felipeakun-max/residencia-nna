@@ -57,3 +57,4 @@ async def frontend():
             return HTMLResponse(r.read().decode("utf-8"))
     except Exception as e:
         return HTMLResponse(f"<h1>Error: {e}</h1>")
+ 
